@@ -15,23 +15,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js (FIXED for Vite)
+      # 2. Setup Node.js (Vite requires 20+)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # 3. Move into correct folder (IMPORTANT FIX)
+      # 3. Install dependencies (NO cd)
       - name: Install dependencies
-        run: |
-          cd Online_Shopping_Full_Stack
-          npm install
+        run: npm install
 
       # 4. Build project
       - name: Build
-        run: |
-          cd Online_Shopping_Full_Stack
-          npm run build
+        run: npm run build
 
       # 5. Safe test step
       - name: Test
