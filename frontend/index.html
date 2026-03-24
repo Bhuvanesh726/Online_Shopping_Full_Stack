@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ShopEase - Your premium online shopping destination. Discover curated products, enjoy secure Stripe payments, and get AI-powered personalized recommendations." />
+    <meta name="keywords" content="online shopping, e-commerce, secure payments, AI recommendations" />
+    <meta name="author" content="ShopEase" />
+    <title>ShopEase - Online Shopping Hub</title>
+  </head>
+  <body>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <div id="root"></div>
+    <script>
+      window.global = window;
+      window.onerror = function(message, source, lineno, colno, error) {
+        document.body.innerHTML += '<div style="color:red;font-size:24px;background:yellow;padding:20px;z-index:999999;position:fixed;top:0;left:0;right:0">GLOBAL ERROR: ' + message + '</div>';
+        return false;
+      };
+      window.addEventListener("unhandledrejection", function(event) {
+        document.body.innerHTML += '<div style="color:red;font-size:24px;background:yellow;padding:20px;z-index:999999;position:fixed;top:0;left:0;right:0">PROMISE REJECTION: ' + (event.reason ? event.reason.toString() : 'Unknown Error') + '</div>';
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
