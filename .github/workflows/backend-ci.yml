@@ -22,7 +22,7 @@ jobs:
 
       - name: Build with Maven
         working-directory: backend
-        run: ./mvnw clean package -DskipTests
+        run: mvn clean package -DskipTests
 
       - name: Run tests
         working-directory: backend
@@ -34,4 +34,4 @@ jobs:
           SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
           APP_JWT_SECRET: testSecretKeyForCIOnlyNotForProduction1234
           APP_JWT_EXPIRATION: 86400000
-        run: ./mvnw test
+        run: mvn test
