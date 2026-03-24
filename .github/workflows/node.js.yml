@@ -18,9 +18,9 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: Online_Shopping_Full_Stack/Online_Shopping_Full_Stack
+        working-directory: Online_Shopping_Full_Stack
         run: npm install
 
       - name: Build
-        working-directory: Online_Shopping_Full_Stack/Online_Shopping_Full_Stack
+        working-directory: Online_Shopping_Full_Stack
         run: npm run build
