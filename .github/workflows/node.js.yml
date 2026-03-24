@@ -11,26 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repo
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # 2. Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # 3. Install dependencies (CORRECT PATH)
       - name: Install dependencies
-        working-directory: Online_Shopping_Full_Stack
+        working-directory: Online_Shopping_Full_Stack/Online_Shopping_Full_Stack
         run: npm install
 
-      # 4. Build project
       - name: Build
-        working-directory: Online_Shopping_Full_Stack
+        working-directory: Online_Shopping_Full_Stack/Online_Shopping_Full_Stack
         run: npm run build
-
-      # 5. Test (safe)
-      - name: Test
-        run: echo "No tests configured"
