@@ -11,24 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout
+      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Setup Node (FIXED VERSION)
+      # 2. Setup Node.js (FIXED for Vite)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # Install dependencies
+      # 3. Move into correct folder (IMPORTANT FIX)
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd Online_Shopping_Full_Stack
+          npm install
 
-      # Build project
+      # 4. Build project
       - name: Build
-        run: npm run build
+        run: |
+          cd Online_Shopping_Full_Stack
+          npm run build
 
-      # Optional test
+      # 5. Safe test step
       - name: Test
         run: echo "No tests configured"
