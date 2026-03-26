@@ -31,13 +31,14 @@ public class DataInitializer implements CommandLineRunner {
             log.info("Legacy active column already dropped or does not exist");
         }
 
+        log.info("Initializing users...");
+        initUsers();
+
         if (categoryRepository.count() == 0) {
             log.info("Initializing categories and products...");
             initCategories();
             initProducts();
         }
-        log.info("Initializing users...");
-        initUsers();
         log.info("Initialization complete!");
     }
 
