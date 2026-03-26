@@ -23,6 +23,7 @@ public class EmailService {
     private void sendSilently(SimpleMailMessage message) {
         try {
             emailSender.send(message);
+            System.out.println("✅ Email sent successfully to: " + String.join(", ", message.getTo()));
         } catch (Exception e) {
             System.err.println("Failed to send email to " + message.getTo() + ": " + e.getMessage());
         }

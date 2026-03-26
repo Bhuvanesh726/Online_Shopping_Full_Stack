@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -53,7 +54,7 @@ public class PaymentService {
         return razorpayOrderId;
     }
 
-    @org.springframework.transaction.annotation.Transactional
+    @Transactional
     public void handlePaymentSuccess(String razorpayOrderId) {
         Order order = orderService.findByStripeSessionId(razorpayOrderId);
         if (order.getStatus() == Order.OrderStatus.PENDING) {
