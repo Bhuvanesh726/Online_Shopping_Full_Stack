@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { useAuth } from './context/AuthContext';
@@ -88,6 +89,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <SpeedInsights />
         </CartProvider>
       </AuthProvider>
     </Router>
