@@ -50,6 +50,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/uploads/files/**").permitAll()
                         .requestMatchers("/api/payments/webhook").permitAll()
                         .requestMatchers("/api/recommendations/public/**").permitAll()
+                        .requestMatchers("/healthz").permitAll()
                         .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
