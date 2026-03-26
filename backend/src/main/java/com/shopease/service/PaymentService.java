@@ -53,6 +53,7 @@ public class PaymentService {
         return razorpayOrderId;
     }
 
+    @org.springframework.transaction.annotation.Transactional
     public void handlePaymentSuccess(String razorpayOrderId) {
         Order order = orderService.findByStripeSessionId(razorpayOrderId);
         if (order.getStatus() == Order.OrderStatus.PENDING) {
