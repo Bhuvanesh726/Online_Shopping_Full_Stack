@@ -207,6 +207,25 @@ const OrdersPage = () => {
                                         <FiDownload size={14} /> Invoice
                                     </button>
                                 )}
+                                {order.status === 'DELIVERED' && (
+                                    <button 
+                                        className="btn btn-sm btn-outline" 
+                                        style={{ borderColor: 'var(--error)', color: 'var(--error)' }}
+                                        onClick={async () => {
+                                            if (window.confirm('Are you sure you want to request a return for this order? (Only valid for items with a 7-day return policy)')) {
+                                                try {
+                                                    await orderAPI.updateStatus(order.id, 'RETURN_REQUESTED');
+                                                    fetchOrders();
+                                                } catch(e) {}
+                                            }
+                                        }}
+                                    >
+                                        Return Order
+                                    </button>
+                                )}
+                                {order.status === 'RETURN_REQUESTED' && (
+                                    <span style={{ fontSize: '0.85rem', color: '#f59e0b', fontWeight: 600 }}>Return Requested</span>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -380,9 +380,25 @@ const SellerDashboard = () => {
                                                                         <button className="btn btn-sm btn-ghost" style={{ border: '1px solid var(--border)' }} onClick={() => navigate(`/seller?tab=messages&contactId=${order.userId}`)}>
                                                                             <FiMessageSquare /> Message Buyer
                                                                         </button>
-                                                                        <button className="btn btn-sm btn-ghost" style={{ color: 'var(--error)' }} onClick={() => handleOrderStatus(order.id, 'RETURNED')}>
-                                                                            <FiX /> Return
-                                                                        </button>
+                                                                        
+                                                                        {order.status === 'RETURN_REQUESTED' ? (
+                                                                            <>
+                                                                                <button className="btn btn-sm btn-primary" style={{ background: '#f59e0b', color: 'white' }} onClick={() => handleOrderStatus(order.id, 'RETURN_APPROVED')}>
+                                                                                    <FiCheck /> Approve Return
+                                                                                </button>
+                                                                                <button className="btn btn-sm btn-ghost" style={{ color: 'var(--error)' }} onClick={() => handleOrderStatus(order.id, 'RETURN_REJECTED')}>
+                                                                                    <FiX /> Reject Return
+                                                                                </button>
+                                                                            </>
+                                                                        ) : (
+                                                                            <button className="btn btn-sm btn-ghost" style={{ color: 'var(--error)' }} onClick={() => {
+                                                                                if (window.confirm("Manually cancel or force return this order?")) {
+                                                                                    handleOrderStatus(order.id, 'RETURNED');
+                                                                                }
+                                                                            }}>
+                                                                                <FiX /> Cancel/Return
+                                                                            </button>
+                                                                        )}
                                                                     </div>
                                                                 </div>
                                                             ))}

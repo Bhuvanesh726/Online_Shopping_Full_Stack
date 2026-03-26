@@ -37,7 +37,7 @@ const CheckoutPage = () => {
             const razorpayOrderId = checkoutData.checkoutUrl; // Renamed from backend
             
             const options = {
-                key: 'rzp_test_SUPBzaVmVYZfqM', 
+                key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_SVnwmCEiNuLRSR', 
                 amount: cart.totalAmount * 100,
                 currency: 'INR',
                 name: 'ShopEase',
