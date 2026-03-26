@@ -2,8 +2,12 @@ import axios from 'axios';
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 
-const API_URL = 'http://localhost:8081/api/messages';
-const WS_URL = 'http://localhost:8081/ws';
+// Dynamic URL config for Production vs Local
+const API_URL = import.meta.env.VITE_API_BASE_URL 
+    ? `${import.meta.env.VITE_API_BASE_URL}/messages` 
+    : 'http://localhost:8081/api/messages';
+
+const WS_URL = import.meta.env.VITE_WS_URL || 'http://localhost:8081/ws';
 
 const getAuthHeader = () => {
     const token = localStorage.getItem('token');
